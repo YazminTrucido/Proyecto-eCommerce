@@ -27,17 +27,17 @@ document.addEventListener("DOMContentLoaded", function(e){
       }});
 
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
-      console.log(productslist)
+      //console.log(productslist)
 
       // Petición de variables en URL
       const infoUrl = window.location.search;
-      console.log(infoUrl);
+      //console.log(infoUrl);
       const urlParams = new URLSearchParams(infoUrl);
       const productName = urlParams.get('title')
       const productCost = urlParams.get('cst')
       const productDesc = urlParams.get('desc')
       const productSold = urlParams.get('sold')
-      console.log(productName);
+      //console.log(productName);
 
         if (resultObj.status === "ok")
         {
@@ -59,10 +59,10 @@ document.addEventListener("DOMContentLoaded", function(e){
             showImagesGallery(product.images);
  
             var productos = product.relatedProducts;
-            console.log(productos)
+            //console.log(productos)
           
             for(let i = 0; i < productos.length; i++){
-              console.log(productslist[productos[i]].name)
+              //console.log(productslist[productos[i]].name)
 
               let htmlContentToAppend = "";
               htmlContentToAppend = `
