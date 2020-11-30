@@ -6,10 +6,8 @@ function showImagesGallery(array){
         let imageSrc = array[i];
 
         htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-            </div>
+        <div class="carousel-item">
+          <img src="` + imageSrc + `" class="d-block w-100" alt=" ">
         </div>
         `
 
@@ -19,28 +17,66 @@ function showImagesGallery(array){
 
 //Función que se ejecuta una vez que se haya lanzado el evento
 document.addEventListener("DOMContentLoaded", function(e){
+    var productslist
+
+    getJSONData(PRODUCTS_URL).then(function(resultObj){
+        if (resultObj.status === "ok")
+        {
+          productslist = resultObj.data;
+          return productslist;
+      }});
 
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
+      console.log(productslist)
+
+      // Petición de variables en URL
+      const infoUrl = window.location.search;
+      console.log(infoUrl);
+      const urlParams = new URLSearchParams(infoUrl);
+      const productName = urlParams.get('title')
+      const productCost = urlParams.get('cst')
+      const productDesc = urlParams.get('desc')
+      const productSold = urlParams.get('sold')
+      console.log(productName);
+
         if (resultObj.status === "ok")
         {
             product = resultObj.data;
-
-            let productNameHTML = document.getElementById("productName");
+            let productNameNotaHTML = document.getElementById("nota");
             let productNameTitleHTML = document.getElementById("productNameTitle");
             let productDescriptionHTML = document.getElementById("productDescription");
             let productCostHTML = document.getElementById("productCost");
             let productSoldCountHTML = document.getElementById("productSoldCount");
-            let productCategoryHTML = document.getElementById("productCategory");
-            
-            productNameHTML.innerHTML = product.name;
-            productNameTitleHTML.innerHTML = product.name;
-            productDescriptionHTML.innerHTML = product.description;
-            productCostHTML.innerHTML = product.currency + " " + product.cost;
-            productSoldCountHTML.innerHTML = product.soldCount;
-            productCategoryHTML.innerHTML = product.category;
+            let productosRelacionadosHTML = document.getElementById("relatedProducts")
+
+            productNameNotaHTML.innerHTML = product.name;
+            productNameTitleHTML.innerHTML = productName;
+            productDescriptionHTML.innerHTML = productDesc;
+            productCostHTML.innerHTML = product.currency + " " + productCost;
+            productSoldCountHTML.innerHTML = productSold;
 
             //Muestro las imagenes en forma de galería
             showImagesGallery(product.images);
+ 
+            var productos = product.relatedProducts;
+            console.log(productos)
+          
+            for(let i = 0; i < productos.length; i++){
+              console.log(productslist[productos[i]].name)
+
+              let htmlContentToAppend = "";
+              htmlContentToAppend = `
+                  <div class="col-lg-3 col-md-4 col-6">
+                      <a href="product-info.html?title=`+ productslist[productos[i]].name +`&cst=`+ productslist[productos[i]].cost +`&desc=`+ productslist[productos[i]].description +`&sold=`+ productslist[productos[i]].soldCount +`">
+                      <img class="img-fluid img-thumbnail" src="` + productslist[productos[i]].imgSrc + `" alt=""></a>
+                      <small>`+ productslist[productos[i]].name +`</small><span> </span>
+                      <small>`+ productslist[productos[i]].currency + productslist[productos[i]].cost +`</small>
+                  </div>
+              `
+      
+              productosRelacionadosHTML.innerHTML += htmlContentToAppend;
+          }
+
         }
     });
 

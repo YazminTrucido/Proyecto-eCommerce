@@ -12,11 +12,13 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 // Obtener y almacenar datos de usuario
 function datos(){
+    var usuario = document.getElementById('usuario').value;
     var email = document.getElementById('email').value;
     var contraseña = document.getElementById('contraseña').value;
 
     usuario = {
-        user: email,
+        user: usuario,
+        email: email, 
         contraseña: contraseña
     }
 

@@ -40,8 +40,17 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="py-2 d-none d-md-inline-block" id="loginUser" href="login.html"></a>
+      <div class="btn-group">
+        <button type="button" class="btn btn-success" style="padding-top: inherit; padding-bottom: inherit;" id="loginUser"></button>
+          <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top: inherit; padding-bottom: inherit;">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" type="button"><a href="cart.html">Ver mi carrito</a></button>
+            <button class="dropdown-item" type="button"><a href="my-profile.html">Mi perfil</a></button>
+            <button class="dropdown-item" type="button"><a href="login.html">Cerrar sesión</a></button>
+          </div>
+        </div>
     </div>
   </nav>
   <div class="container p-5">
@@ -52,6 +61,12 @@
       <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
     </div>
   </div>
+  <footer class="text-muted">
+    <div class="container">
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    </div>
+  </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
