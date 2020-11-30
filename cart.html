@@ -70,37 +70,128 @@
       <p class="lead">Verás aquí todos los productos añadidos a tu carrito.</p>
     </div>
 
-    <div class="container">
-      <div id="prod-cart" style="width: 70%; float: left; text-align:center;"></div><br>
+    <div class="container" style="margin: auto; width: 65%;">
+      <div id="prod-cart" style="text-align:center;"></div><br>
 
-      <br>
-      <div style="width: 28%; float: right;">
-        <nav style="background-color: rgba(255, 172, 223, 0.363); border-radius: 30px;">
-          <div style="margin: 5%;">
-            <br>
-            <h5 style="text-align: center;"><strong>Resumen del pedido</strong></h5>
-            <hr><br>
-            <p style="width: 50%; float: left;">Subtotal</p>
-            <div id="sub-resultado" style="float: right; width: 50%; text-align: right; font-weight: bold;"></div>
-            <br><br>
+      <nav style="background-color: rgba(191, 204, 191, 0.226); border-radius: 30px;">
+        <div style="margin: 5%;">
+          <br>
+          <h5 style="text-align: center;"><strong>Resumen del pedido</strong></h5>
+          <hr><br>
+          <p style="width: 50%; float: left;">Subtotal</p>
+          <div id="sub-resultado" style="float: right; width: 50%; text-align: right; font-weight: bold;"></div>
+          <br>
+          <p style="width: 50%; float: left;">Costo de envío</p>
+          <div id="envio-resultado" style="float: right; width: 50%; text-align: right; font-weight: bold;">UYU 0</div>
+          <br>
+          <hr>
+          <p style="width: 50%; float: left;">Total</p>
+          <div id="total-resultado" style="float: right; width: 50%; text-align: right; font-weight: bolder;"></div>
+          <br><br>
+        </div>
+      </nav>
 
-            <div class="dropdown">
-              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Conversión de moneda
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <button class="dropdown-item" type="button" onclick="convertirUYU()">Convertir a UYU</button>
-                <button class="dropdown-item" type="button" onclick="convertirUSD()">Convertir a USD</button>
+      <nav style="background-color:rgba(191, 204, 191, 0.226); border-radius: 30px;">
+        <div style="margin: 5%;">
+          <br>
+          <h5 style="text-align: center;"><strong>Envío</strong></h5>
+          <hr><br>
+          <div id="confirm"></div>
+
+          <form action="" id="envio" method="POST" onsubmit="return false" novalidate>
+            <h5>Tipo de envío</h5>
+            <fieldset>
+              <input type="radio" name="tipoEnvio" value="15" class="tipoEnvio" id="premium" onclick="modificar()"
+                required><label>Premium 2 a 5 días (15%)</label><br>
+              <input type="radio" name="tipoEnvio" value="7" class="tipoEnvio" id="express"
+                onclick="modificar()"><label>Express 5 a
+                8 días (7%)</label><br>
+              <input type="radio" name="tipoEnvio" value="5" class="tipoEnvio" id="standard"
+                onclick="modificar()"><label>Standard 12
+                a 15 días (5%)</label>
+              <p id="envioError"></p>
+            </fieldset><br>
+            <h5>Dirección</h5>
+            <fieldset class="form-row">
+              <div class="form-group col-md-6"><input type="text" name="calle" id="calle" placeholder="Calle"
+                  class="form-control" required>
+                <p id="calleError"></p>
+              </div>
+              <div class="form-group col-md-6"><input type="text" name="esq" placeholder="Esquina" class="form-control">
+              </div>
+              <div class="form-group col-md-6"><input type="text" name="numeroPuerta" id="numeroPuerta"
+                  placeholder="Número de puerta" pattern="[0-9]{4,6}" class="form-control" required>
+                <p id="numeroPuertaError"></p>
+              </div>
+              <div class="form-group col-md-6"><input type="text" name="zip" id="postal" placeholder="Código postal"
+                  class="form-control" pattern="[0-9]{5,6}" required>
+                <p id="postalError"></p>
+              </div>
+            </fieldset>
+          </form><br>
+        </div>
+      </nav>
+
+      <nav style="background-color: rgba(191, 204, 191, 0.226); border-radius: 30px;">
+        <div style="margin: 5%;">
+          <br>
+          <h5 style="text-align: center;"><strong>Forma de pago</strong></h5>
+          <hr><br>
+          <!-- Botón Modal -->
+          <button type="submit" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
+            Seleccionar forma de pago
+          </button><br><br>
+        </div>
+      </nav><br>
+
+      <button type="submit" id="finalizar" form="envio" class="btn btn-success btn-lg btn-block"
+        style="width: 50%; margin: auto">
+        Finalizar compra
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Forma de pago</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </select>
+            </div>
+
+            <div class="modal-body">
+              <div>
+                <div id="alert"></div>
+
+                <form id="pago" action="" method="POST" onsubmit="return false">
+                  <fieldset>
+                    <input type="radio" name="formaPago" onclick="formaTarjeta()" id="formaCredito" required>
+                    <label for="formaPago">Tarjeta de Crédito</label>
+                    <fieldset class="form-row" id="tarjeta">
+
+                    </fieldset>
+                  </fieldset><br>
+
+                  <fieldset>
+                    <input type="radio" name="formaPago" onclick="formaTransferencia()" id="formaCuenta">
+                    <label for="formaPago">Transferencia bancaria</label>
+                    <fieldset class="form-row" id="transferencia">
+
+                    </fieldset>
+                  </fieldset>
+                  <p id="formaError"></p>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-success" id="confirmPago">Confirmar</button>
+                  </div>
+                </form>
               </div>
             </div>
-            <br><br>
           </div>
-        </nav><br>
-        <a type="button" style="margin: auto;" class="btn btn-dark btn-lg btn-block" href="cart.html">
-          Pagar</a>
-      </div><br>
-    </div>
+        </div><br>
+      </div>
 
   </main>
 
