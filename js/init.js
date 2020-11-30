@@ -53,7 +53,7 @@ document.getElementById("loginUser").innerHTML = '<p>' + em + '<p>';
 
 
 // Buscador
-document.addEventListener("DOMContentLoaded", function (e) {
+document.addEventListener("DOMContentLoaded", function () {
   var productosBuscador
   fetch(PRODUCTS_URL)
   .then(function (response) {

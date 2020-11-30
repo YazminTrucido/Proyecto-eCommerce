@@ -42,32 +42,56 @@
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
 
       <div>
-        <input type="text" class="form-control" name="buscador" placeholder="Buscar..." id="formulario" autocomplete="off">
+        <input type="text" class="form-control" name="buscador" placeholder="Buscar..." id="formulario"
+          autocomplete="off">
         <div id="resultado" class="btn-dark" aria-labelledby="dropdownMenuLink" style="position: absolute;">
         </div>
       </div>
-      
+
       <div class="btn-group">
-        <button type="button" class="btn btn-success" style="padding-top: inherit; padding-bottom: inherit;" id="loginUser"></button>
-          <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top: inherit; padding-bottom: inherit;">
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button"><a href="cart.html">Ver mi carrito</a></button>
-            <button class="dropdown-item" type="button"><a href="my-profile.html">Mi perfil</a></button>
-            <button class="dropdown-item" type="button"><a href="login.html">Cerrar sesión</a></button>
-          </div>
+        <button type="button" class="btn btn-success" style="padding-top: inherit; padding-bottom: inherit;"
+          id="loginUser"></button>
+        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" style="padding-top: inherit; padding-bottom: inherit;">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button"><a href="cart.html">Ver mi carrito</a></button>
+          <button class="dropdown-item" type="button"><a href="my-profile.html">Mi perfil</a></button>
+          <button class="dropdown-item" type="button"><a href="login.html">Cerrar sesión</a></button>
         </div>
+      </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <main role="main" class="pb-5">
+    <div class="text-center p-4">
+      <h2>Mi perfil</h2>
+      <p class="lead">Podrás ver y modificar aquí tus datos personales.</p>
+    </div><br>
+
+    <div class="container" style="width: 55%;">
+      <div class="row justify-content-md-left">
+        <form action="" method="GET" id="datos" novalidate>
+          <label for="name">Nombre</label>
+          <input type="text" name="name" id="name" class="form-control"></input>
+          <div id="errorNombre"></div><br>
+          <label for="surname">Apellidos</label>
+          <input type="text" name="surname" id="surname" class="form-control"></input>
+          <div id="errorApellido"></div><br>
+          <label for="age">Edad</label>
+          <input type="number" name="age" id="age" class="form-control"></input>
+          <div id="errorEdad"></div><br>
+          <label for="mail">E-mail</label>
+          <input type="text" name="mail" id="mail" class="form-control"></input>
+          <div id="errorMail"></div><br>
+          <label for="telephone">Teléfono de contacto</label>
+          <input type="number" name="telephone" id="telephone" class="form-control"></input>
+          <div id="errorTelefono"></div><br><br>
+        </form>
+      </div>
+      <button type="submit" form="datos" id="perfil" style="width: 55%; margin: auto" class="btn btn-dark btn-lg btn-block">Guardar cambios</button>
     </div>
-  </div>
+  </main>
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
