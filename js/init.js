@@ -57,14 +57,19 @@ var em = JSON.parse(localStorage.getItem('user')).user;
 document.getElementById("loginUser").innerHTML = '<p>' + em + '<p>';
 
 
-/* datos = fetch('https://japdevdep.github.io/ecommerce-api/product/5678.json') // Buscador
+// Buscador
+var auto1
+var auto2
+var auto3
+var auto4
+
+fetch('https://japdevdep.github.io/ecommerce-api/product/5678.json')
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data.name)
-        return data.name
-        // data.description
+        auto1 = data.name
       });
 
-console.log(datos.PromiseValue); */
+
+

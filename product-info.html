@@ -13,6 +13,25 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    /* Estrellas */
+    input[type="radio"] {
+      display: none;
+    }
+    #estrellas{
+      direction: rtl;
+      unicode-bidi: bidi-override;
+    }
+    label:hover,
+    label:hover~label {
+      color: orange;
+    }
+    input[type="radio"]:checked~label {
+      color: orange;
+    }
+  </style>
 </head>
 
 <body>
@@ -23,16 +42,92 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      <a class="py-2 d-none d-md-inline-block" id="loginUser" href="login.html"></a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 13/09/2020) y Entrega 4 (Fecha de entrega: 20/09/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <main role="main">
+    <div class="container mt-5">
+      <div class="text-center p-4">
+        <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquiera sea el producto
+          seleccionado previamente, siempre se visualizará el presente: <strong id="productName"></strong>.</p>
+      </div>
+      <h3><strong id="productNameTitle"></strong></h3>
+      <hr class="my-3">
+      <dl>
+        <dt>Descripción</dt>
+        <dd>
+          <p id="productDescription"></p>
+        </dd>
+
+        <dt>Precio del producto</dt>
+        <dd>
+          <p id="productCost"></p>
+        </dd>
+
+        <dt>Cantidad de productos vendidos</dt>
+        <dd>
+          <p id="productSoldCount"></p>
+        </dd>
+
+        <dt>Categoría del producto</dt>
+        <dd>
+          <p id="productCategory"></p>
+        </dd>
+
+        <dt>Imágenes ilustrativas</dt>
+        <dd>
+          <div class="row text-center text-lg-left" id="productImagesGallery">
+          </div>
+        </dd>
+      </dl>
+      <a type="button" style="width: 65%; margin: auto" class="btn btn-dark btn-lg btn-block" href="cart.html">Añadir al
+        carrito</a>
+      <br><br><br>
+
+      <!-- Caja de comentarios (modificar, estilos dentro de tags) -->
+      <nav style="background-color: rgba(172, 255, 186, 0.363); border-radius: 30px;">
+        <div style="margin: 2%;">
+          <br>
+          <h3><strong>Opiniones sobre el producto</strong></h3>
+          <div class="list-group" id="comm-list-container"></div>
+          <br>
+        </div>
+      </nav>
+      <nav style="background-color: rgba(255, 172, 223, 0.363); border-radius: 30px;">
+        <div style="margin: 2%;">
+          <br>
+          <h3><strong>Opinar sobre el producto</strong></h3>
+          <br>
+          <form method="POST" action="#">
+            <div><strong>Puntuar: </strong> 
+              <span id="estrellas">
+              <input id="radio1" type="radio" name="estrellas" value="5" required>
+              <label for="radio1"><span class="fa fa-star"></span></label>
+              <input id="radio2" type="radio" name="estrellas" value="4">
+              <label for="radio2"><span class="fa fa-star"></label>
+              <input id="radio3" type="radio" name="estrellas" value="3">
+              <label for="radio3"><span class="fa fa-star"></label>
+              <input id="radio4" type="radio" name="estrellas" value="2">
+              <label for="radio4"><span class="fa fa-star"></label>
+              <input id="radio5" type="radio" name="estrellas" value="1">
+              <label for="radio5"><span class="fa fa-star"></label>
+              </span>
+            </div>
+            <br>
+            <textarea name="comentario" cols="30" placeholder="Escribe tu comentario aquí..." required></textarea>
+            <br><br>
+            <button type="submit" style="width: auto; font-size: 15px;"
+              class="bnt btn-dark btn-lg btn-block">Publicar</button>
+          </form>
+          <br><br>
+        </div>
+      </nav>
+
+      <br><br>
+      <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver más productos</a>
+
     </div>
-  </div>
+  </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
