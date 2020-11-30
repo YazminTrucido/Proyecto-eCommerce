@@ -9,3 +9,19 @@ document.addEventListener("DOMContentLoaded", function(e){
         return true;
     })
 });
+
+// Obtener y almacenar datos de usuario
+function datos(){
+    var email = document.getElementById('email').value;
+    var contraseña = document.getElementById('contraseña').value;
+
+    usuario = {
+        user: email,
+        contraseña: contraseña
+    }
+
+    jsonUsuario = JSON.stringify(usuario);
+    localStorage.setItem('user', jsonUsuario);
+};
+
+

@@ -15,53 +15,60 @@
   <link href="css/styles.css" rel="stylesheet">
 
   <style>
-    html,
     body {
-      height: 100%;
+      background-color: #232B2B;
     }
 
-    body {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-      align-items: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      background-color: #f5f5f5;
-    }
-
-    .signin {
-      width: 100%;
-      max-width: 330px;
-      padding: 15px;
-      margin: auto;
+    .contenido {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      
+      background-color: white;
+      border-radius: 50px;
+      box-shadow: 5px 3px 4px palevioletred;
     }
 
     #enviar {
       background-color: lightgreen;
-      width: 25%;
+      width: 37%;
       font-weight: 600;
+    }
+    #enviar:hover {
+      box-shadow: 5px 3px 4px palevioletred;
     }
 
     .icono {
       width: 50%;
+      border-radius: 30px;
     }
 
     h4 {
       font-weight: 600;
     }
+
+    input {
+      border-color: palevioletred;
+    }
+    input:hover {
+      border-color: lightgreen;
+    }
   </style>
+
 
 </head>
 
 <body class="text-center">
-  <div class="container p-5">
 
+  <div class="contenido">
+    <br>
     <img class="icono" src="img/login.png">
     <br><br><br>
     <h4>Por favor, registrese</h4>
 
-    <form action="" method="post" id="user">
+    <form action="" method="post" id="user" onsubmit="datos()">
       <br>
       <input type="text" name="email" id="email" size="30" placeholder="Dirección de correo electrónico" required>
       <br>
@@ -71,10 +78,13 @@
 
       <button type="submit" id="enviar">Registrarse</button>
     </form>
+    <br>
   </div>
+
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
+
 </body>
 
 </html>

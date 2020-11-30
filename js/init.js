@@ -49,3 +49,22 @@ if(!sessionStorage.getItem("logged") && !window.location.href.endsWith("login.ht
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 });
+  
+
+// Mostrar datos almacenados de usuario
+console.log(JSON.parse(localStorage.getItem('user')));
+var em = JSON.parse(localStorage.getItem('user')).user;    
+document.getElementById("loginUser").innerHTML = '<p>' + em + '<p>';
+
+
+/* datos = fetch('https://japdevdep.github.io/ecommerce-api/product/5678.json') // Buscador
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data.name)
+        return data.name
+        // data.description
+      });
+
+console.log(datos.PromiseValue); */
